@@ -1,2 +1,47 @@
 A big Thank you to Professor Wickes' Pokemon file provided in the week four module. I drew heavy inspiration from it.
 Everything else was done from memory. I was able to rely on prior Knowledge. I did google for unzipping files at https://appdividend.com/2020/10/19/how-to-unzip-list-of-tuples-in-python/ then remember I did not need this operation in my code. Thanks.
+
+
+
+
+ASSIGNMENT DESCRIPTION:
+
+
+
+top_header = ['', 'Name', '', 'National Pokédex\nnumber', 'Type(s)', '', 'Evolves from', 'Evolves into', 'Notes']
+bottom_header = ['Generation', 'English', 'Japanese', '', 'Primary', 'Secondary', '', '', '']
+Your goal for this program is to write a function that takes in the two lists and uses a set of rules to combine them into a single new list of headers. DO NOT close this and just start coding now. There are requirements. Read this whole thing first.
+
+Here our the merging rules:
+
+When one is blank but the other has content, accept whichever has content. 
+When both have content, accept the bottom row's content. 
+Use “MissingLabel” if no content is present. 
+Write a function called combine_headers that will:
+
+take in these two lists (as parameters)
+assert that they are of the same length (using an assert statement)
+processes the contents of the lists (and creates the new list)
+returns that single new list of headers
+Produce two versions of this: One where you use the mutual index values to lookup the elements for comparison and another where you zip the lists together before comparison. The returned result should be the same for both.
+
+Example function call: combine_headers(top_header, bottom_header)
+
+The output of both functions should be this list:
+
+['Generation', 'English', 'Japanese', 'National Pokédex\nnumber', 'Primary', 'Secondary', 'Evolves from', 'Evolves into', 'Notes']
+Requirements and restrictions: 
+
+use the boolean variable assignment style that we discussed in class. Eg: check = x > 9. And then use the variables you define within your conditional. 
+While I don’t want to dictate your structure, you should avoid having the following situations:
+A bunch of if blocks on their own or a bunch of if/else blocks on their own.
+A bunch of if blocks that are deeply nested.
+If you are worried you’ve fallen into this, email me your code. To be clear, this would be like 3 or more of them. 
+Submit:
+
+Do not submit ipynb files. Export them to py files and submit those. 
+
+Your mutual index version py file
+Your zipped list version py file
+A short document with any notes, etc. that you came up with along the way. This is the place to list any resources that you referenced, people you worked with, etc.
+ 
