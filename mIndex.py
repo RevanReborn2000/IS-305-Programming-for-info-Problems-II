@@ -1,3 +1,5 @@
+#This version done with list indices
+
 _header = ['', 'Name', '', 'National Pokédex\nnumber', 'Type(s)', '', 'Evolves from', 'Evolves into', 'Notes']
 bottom_header = ['Generation','English', 'Japanese', '', 'Primary', 'Secondary', '', '', '']
 
