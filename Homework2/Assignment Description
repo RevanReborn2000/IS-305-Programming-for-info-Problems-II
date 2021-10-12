@@ -1,0 +1,29 @@
+You will use the attached CSV file to load some data and transform it. As always, read the entire assignment before starting to code. Your goal here is to use the attached data file to create separate text files for each pokemon’s description text. There are specific requirements for the file names etc. Again, read all the directions first and look back to your class notes and the class code examples. Try to pay attention to the examples that I’ve shown you in class and not fall back on prior programming examples when they have not been in Python. 
+
+Why this structure? This mimics how data needs to be prepared for topic modelling. Most tools expect that each “document” is a separate file. For some tasks, you may be delivered data packaged in a single file and need to create these individual files before you can use the tool.  I’ve actually had to do this a lot for several types of projects!
+
+The file names should be the pokedex numbers, followed by a hyphen, followed by the pokemon’s name. For example, ‘001-Bulbasaur.txt’. 
+
+Investigate the pokedex number column within the data. There are several data cleaning issues within the column. At a minimum, you will need to handle these situations and issues:
+
+Some of them are empty. Skip any rows that don’t have anything in that field. 
+We want the pokedex numbers to sort correctly so we need to add some leading zeros. Use the zfill string method to add leading zeros such that each pokedex number contains at least three characters. Eg 001, 003, 099, 899, etc.
+Look through the data and find one other data cleaning issue. Write a function that will handle that situation. You may not simply check for a very specific value to fix (e.g. a check like name == “Fizzy[1]” is not allowable because it hard codes the name). But writing something such as checking if “[]” is in the name and correcting that is fine. Email me if you are unsure about the situation at hand. Your function should return the corrected/clean value.
+
+In a text file, explain your investigation process, why you chose what you did for cleaning, and how you approached the cleaning process. This should be about 300 words. Code doesn’t count for words, but examples and/or screenshots should be included. Submit this as a pdf along with your assignment. Worried about not finding anything to clean? Don’t. There’s plenty. 
+
+Creating the folder, file names, and files: 
+
+Use pathlib (remember that you need to import this. Check out notes and prior lectures about how to use this module) to create a target folder called ‘description_text’. Check if that output folder exists or not, and have it create the folder if it does not already exist. 
+Use pathlib to create a path object for the new file (using the previously stated format for file names), be sure that the ‘.txt’ extension is on there. 
+Use pathlib to combine the target folder and the new file name to create the file name for the output file.
+Use the write_text() path method to write out the description text to the path object you’ve just created. 
+T
+
+For submission:
+
+strongly suggested: zip up your description_text folder and submit that zip file (don't worry about this if you are having trouble doing it)
+suggestion: have your input CSV file in the same folder as your script and use a relative path to read it in
+suggestion: submit your CSV file as well
+required: submit your PY file with your code
+required: submit your text file with your data cleaning answers. You may also use this document to add any processing notes, etc. that would give us more context for grading.
