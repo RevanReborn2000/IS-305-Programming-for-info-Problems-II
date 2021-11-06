@@ -1,0 +1,120 @@
+This will ask you to use CSV reading and writing boilerplate. My suggested boilerplate is here: https://elliewix.gitbook.io/is205/csv-files
+
+Need help with list syntax? https://elliewix.gitbook.io/is205/lists
+
+Goal: Some of the rows in the pokemon data we are working with are missing names. This program will walk you through a series of steps to populate those empty names with the correct pokemon name.
+
+This is broken down into several steps to solve. Example outputs are provided for each step so you know if you are on the right track. Stuck on a certain step and need to move on? Leave your attempt in place or commented out (but labeled) so we can grade it. Then copy/paste the example output to use as an input for the next stage.
+
+Read through the entire assignment, but only worry about one step at a time!
+
+Preparation: Read in the pokemon names and descriptions file we've using, and use the normal CSV reading boilerplate.
+
+Step 1: Collect the index positions
+Loop through the rows of data and collect the index positions for of the rows with an empty name value. Collect these index positions in a list. This list should have a length of 31 and look like this:
+
+[352, 353, 354, 416, 417, 419, 420, 487, 488, 489, 490, 491, 505, 569, 663, 736, 740, 741, 753, 754, 810, 811, 812, 872, 873, 874, 963, 965, 969, 976, 977]
+
+Step 2: Cluster the empty rows
+One thing we can see within these values is that the adjacent rows are all connected to be the same pokemon. For example, 352, 353, and 354 are all connected because they are the 'blank' names that belong to Castform. Your goal here is to cluster these groups into separate lists that are collected in another list. Your new list should look like this:
+
+[[352, 353, 354],
+ [416, 417],
+ [419, 420],
+ [487, 488, 489, 490, 491],
+ [505],
+ [569],
+ [663],
+ [736],
+ [740, 741],
+ [753, 754],
+ [810, 811, 812],
+ [872, 873, 874],
+ [963],
+ [965],
+ [969],
+ [976, 977]]
+Step 3: add the index position for the row with the name
+Now that you have your list of clusters, we want to figure out what the names should be for these rows of data. Looking at the data, you can see that it is the row just before the start of the blanks. This means we can calculate the value based on the clusters that we've created.
+
+Loop through these your list of clusters, calculate the value that comes just before the first row, and add that in to the beginning of that list.
+
+Your new list should look like this:
+
+[[351, 352, 353, 354],
+ [415, 416, 417],
+ [418, 419, 420],
+ [486, 487, 488, 489, 490, 491],
+ [504, 505],
+ [568, 569],
+ [662, 663],
+ [735, 736],
+ [739, 740, 741],
+ [752, 753, 754],
+ [809, 810, 811, 812],
+ [871, 872, 873, 874],
+ [962, 963],
+ [964, 965],
+ [968, 969],
+ [975, 976, 977]]
+Step 4: Get access to the names now that you have the index positions
+Now we have groups of the labels and the values they need to have. To check our work and get started on the next step, loop through your clusters and print off the pokemon numbers and their names for each.
+
+We want to keep the clusters on individual lines, so this is a great place to use a list comprehension if you are comfortable. You may use a regular list accumulator pattern if you prefer. You will need to loop over the chunks, and then loop over the content within each chunk via a for loop or a list comprehension. Print off the lists with the names. This step is purely so you can easily see the data changes that you need to make, so we aren't being too strict on how this looks.
+
+Your results should look(something) like this:
+
+You can read this as ('351', 'Castform') being a tuple showing Castform's pokemon number and name. Don't get the pokemon numbers and their row numbers confused. They will look really similar becasue they generally go in order, but won't be the same.
+
+[('351', 'Castform'), ('', ''), ('', ''), ('', '')]
+[('412', 'Burmy'), ('', ''), ('', '')]
+[('413', 'Wormadam'), ('', ''), ('', '')]
+[('479', 'Rotom'), ('', ''), ('', ''), ('', ''), ('', ''), ('', '')]
+[('492', 'Shaymin'), ('', '')]
+[('555', 'Darmanitan'), ('', '')]
+[('648', 'Meloetta'), ('', '')]
+[('720', 'Hoopa'), ('', '')]
+[('6', 'Mega Charizard'), ('', ''), ('', '')]
+[('150', 'Mega Mewtwo'), ('', ''), ('', '')]
+[('741', 'Oricorio'), ('', ''), ('', ''), ('', '')]
+[('800', 'Necrozma'), ('', ''), ('', ''), ('', '')]
+[('888', 'Zacian'), ('', '')]
+[('889', 'Zamazenta'), ('', '')]
+[('892', 'Urshifu'), ('', '')]
+[('898', 'Calyrex'), ('', ''), ('', '')]
+Step 5: Update the names and the pokemon numbers in the original data
+Next, loop over your clusters of index positions. This time extract the name and the pokemon number out of the first row of each chunk and save that value.
+
+Use these values to update your original 2D list of data. Run the same code you wrote for step 4 to check that the updates are being made.
+
+Be sure to check and play with (in a separate console or script) how to update values in lists if you aren't sure.
+
+Run you printing code again and you should see that the results now look (something) like:
+
+(it is fine to have the full number of items or be off by one, depending on how you solve it. eg there are 4 castform items to update but I have 3 here because I mutated my clusters list in the process of doing step 5).
+
+[('351', 'Castform'), ('351', 'Castform'), ('351', 'Castform')]
+[('412', 'Burmy'), ('412', 'Burmy')]
+[('413', 'Wormadam'), ('413', 'Wormadam')]
+[('479', 'Rotom'), ('479', 'Rotom'), ('479', 'Rotom'), ('479', 'Rotom'), ('479', 'Rotom')]
+[('492', 'Shaymin')]
+[('555', 'Darmanitan')]
+[('648', 'Meloetta')]
+[('720', 'Hoopa')]
+[('6', 'Mega Charizard'), ('6', 'Mega Charizard')]
+[('150', 'Mega Mewtwo'), ('150', 'Mega Mewtwo')]
+[('741', 'Oricorio'), ('741', 'Oricorio'), ('741', 'Oricorio')]
+[('800', 'Necrozma'), ('800', 'Necrozma'), ('800', 'Necrozma')]
+[('888', 'Zacian')]
+[('889', 'Zamazenta')]
+[('892', 'Urshifu')]
+[('898', 'Calyrex'), ('898', 'Calyrex')]
+Step 6: Write out the new version
+Finally, use the standard boilerplate to write out a new copy of the pokemon data with these updated data. Name your file: updated_pokemon_names_and_descriptions.csv.
+
+Submission:
+Submit:
+
+Your single PY file (not a jupyter notebook) with each step labeled with a code comment.
+Your resulting CSV file
+(Optional but suggested) A text document with any comments, questions, etc. about your code that might be relevant for grading. There are no discussion items required for this assignment
